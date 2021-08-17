@@ -36,7 +36,7 @@ namespace JTNet.Codec
         int totalCount = 0;
 
         foreach (Int32ProbCtxtEntry entrie in entries)
-            totalCount += entrie.getOccCount();
+            totalCount +=(int)entrie.getOccCount();
 
         return totalCount;
     }
@@ -87,11 +87,11 @@ namespace JTNet.Codec
                 if (isFirstTable) {
                     associatedValue = reader.readU32((int) probCtxt
                             .getNbValueBits()) + probCtxt.getMinValue();
-                    probCtxt.assValues.put(symbol, associatedValue);
+                    probCtxt.assValues.Add(symbol, associatedValue);
                 // For the second table we take the associated value of the 
                 // symbol in the first table
                 } else {
-                	associatedValue = (long)probCtxt.assValues.get(symbol);
+                	associatedValue = (long)probCtxt.assValues[symbol];
                 }
 
             int nextContext = (int) reader.readU32((int) nbNextContextBits);

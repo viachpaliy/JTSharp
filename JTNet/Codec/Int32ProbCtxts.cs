@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using JTNet.Format;
+using JTNet.Debug;
 using System.Diagnostics;
 using System.Collections.Generic;
 
@@ -86,7 +87,7 @@ namespace JTNet.Codec
             Console.WriteLine("Prob Context Table Count: " + contextTableCount.ToString());
         }
 
-        BitReader bitReader = new BitReader(reader);
+        BitReader bitReader = new BitReader(reader.inflated);
 
         probContextTables = new Int32ProbCtxtTable[contextTableCount];
 
@@ -100,7 +101,7 @@ namespace JTNet.Codec
             int aligmentsBits = bitReader.getBitBuf().readAsInt(
                     bitReader.getNbBitsLeft());
             if (aligmentsBits != 0)
-                Debug.WriteLine("Problem with alignments bits in the parsing of a probabilistic context table");
+                Console.WriteLine("Problem with alignments bits in the parsing of a probabilistic context table");
         }
     }
 

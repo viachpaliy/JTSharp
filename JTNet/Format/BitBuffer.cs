@@ -26,6 +26,12 @@ namespace JTNet.Format
 		return bitPos;
 	}
 	
+	public void reset()
+	{
+		this.bitPos = 0;
+		this.bitBuffer = 0x0000;
+	}
+	
 	
 	public long getBitBufBitSize() {
 		return this.buffer.Length * 8;
